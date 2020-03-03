@@ -38,7 +38,7 @@ chk_dir(savepath);
 Tsim = 1000;                % # of simulated periods
 T = 200;                    % # of observations
 s0 = zeros(2,1);            % initial condition for state
-theta = [0.01 0.8];
+theta = [0.1 0.5];
 
 YY = gendata(theta, s0, T, Tsim, false);
 
@@ -48,7 +48,7 @@ YY = gendata(theta, s0, T, Tsim, false);
 tune.npara = 2;      % # of parameters
 tune.npart = 1*1024; % # of particles
 tune.nphi  = 50;     % # of stage
-tune.lam   = 2;      % # bending coeff, lam = 1 means linear cooling schedule
+tune.lam   = 1;      % # bending coeff, lam = 1 means linear cooling schedule
 
 % Create the tempering schedule
 tune.phi = (1:1:tune.nphi)';

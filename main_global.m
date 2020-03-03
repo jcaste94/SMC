@@ -43,7 +43,7 @@ YY = y(1:200,:);
 tune.npara = 2;      % # of parameters
 tune.npart = 1*1024; % # of particles
 tune.nphi  = 50;     % # of stage
-tune.lam   = 2;      % # bending coeff, lam = 1 means linear cooling schedule
+tune.lam   = 1;      % # bending coeff, lam = 1 means linear cooling schedule
 
 % Create the tempering schedule
 tune.phi = (1:1:tune.nphi)';
