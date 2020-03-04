@@ -7,5 +7,5 @@
  SMC estimation for the stylized state-space model in *Herbst and Schorfheide (2015)*. 
  
 Two experiments: \
-(a) **Global identification problem**: it highlights the bimodality of the posterior distribution. \
-(b) **Local identification problem**: it highlights the weak identification. 
+⋅⋅* **Global identification problem**: it highlights the bimodality of the posterior distribution. \
+⋅⋅* **Local identification problem**: it highlights the weak identification. 
