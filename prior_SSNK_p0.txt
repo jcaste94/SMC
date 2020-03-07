@@ -1,0 +1,38 @@
+% /********************************************************************
+% **
+% **
+% **   Notes:
+% ** 
+% **
+% **   Each row has the following specification:
+% **
+% **      pdf,arg1,arg2,              mask,fix;
+% **      pdf shape of prior density
+% **                  1: BETA(mean,stdd)
+% **                  2: GAMMA(mean,stdd)
+% **                  3: NORMAL(mean,stdd)
+% **                  4: INVGAMMA(s^2,nu)
+% **                  5: UNIFORM(a,b)
+% **                  0: no prior
+% **      arg1    1st argument for pdf
+% **      arg2    2nd argument for pdf
+% **
+% **      mask    1 if the parameter is fixed to constant
+% **      fix     fixed parameter value (0 if mask=0)
+% ********************************************************************/
+% /* Recover pure parameters */
+2,2,0.5,      0,0 % tau
+5,0,1,        0,0 % \kappa
+2,1.5,0.25,   0,0 % \psi_1
+2,0.5,0.25,   0,0 % \psi_2
+2,0.5,0.5,    0,0 % r^{(A)}
+2,7,2,        0,0 % \pi^{(A)}
+3,0.4,0.2,    0,0 % \gamma^{(Q)}
+5,0,1,        0,0 % \rho_{r}
+5,0,1,        0,0 % \rho_{g}
+5,0,1,        0,0 % \rho_{z}
+4,0.4,4       0,0 % \sigma_{r}
+4,1,4,        0,0 % \sigma_{g}
+4,0.5,4       0,0 % \sigma_{z}
+
+
