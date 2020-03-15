@@ -57,4 +57,50 @@ tune.alp  = 0.9;                    % Mixture weight for mixture proposal
 % run script
 ss_smc; %this file will save parasim, wtsim, tune, others
 
+%% Final report
+
+%------------------------------------------------------------
+% report summary statistics
+%------------------------------------------------------------
+para = squeeze(parasim(end, :, :));
+wght = repmat(wtsim(:, end), 1, 13);
+
+mu  = sum(para.*wght);
+sig = sum((para - repmat(mu, tune.npart, 1)).^2 .*wght);
+sig = (sqrt(sig));
+
+fprintf('Finished SMC algorithm.\n')
+fprintf('para     mean     std\n')
+fprintf('----     ----     ----\n')
+fprintf('tau      %4.2f    %4.3f\n', mu(1), sig(1))
+fprintf('kappa    %4.2f    %4.3f\n', mu(2), sig(2))
+fprintf('psi1     %4.2f    %4.3f\n', mu(3), sig(3))
+fprintf('psi2     %4.2f    %4.3f\n', mu(4), sig(4))
+fprintf('rA       %4.2f    %4.3f\n', mu(5), sig(5))
+fprintf('piA      %4.2f    %4.3f\n', mu(6), sig(6))
+fprintf('gammaQ   %4.2f    %4.3f\n', mu(7), sig(7))
+fprintf('rho_R    %4.2f    %4.3f\n', mu(8), sig(8))
+fprintf('rho_g    %4.2f    %4.3f\n', mu(9), sig(9))
+fprintf('rho_z    %4.2f    %4.3f\n', mu(10), sig(10))
+fprintf('sigma_R  %4.2f    %4.3f\n', mu(11), sig(11))
+fprintf('sigma_g  %4.2f    %4.3f\n', mu(12), sig(12))
+fprintf('sigma_z  %4.2f    %4.3f\n', mu(13), sig(13))
+
+
+    % ----------------------
+    % Export table to LaTeX
+    % ----------------------
+    parameters = {'$\tau$';'$\kappa$'; '$\psi_{1}$';'$\psi_{2}$';'$r^{(A)}$';...
+        '$\pi^{(A)}$';'$\gamma^{(Q)}$';'$\rho_{r}$';'$\rho_{g}$'; '$\rho_{z}$';...
+        '$\sigma_{r}$'; '$\sigma_{g}$'; '$\sigma_{z}$'};
+
+    T = table(mu', sig');
+    T.Properties.RowNames = parameters;
+    T.Properties.VariableNames{'Var1'} = '\textbf{Mean}';
+    T.Properties.VariableNames{'Var2'} = '\textbf{Std}';
+
+    path = '/Users/Castesil/Documents/EUI/Year II - PENN/Spring 2020/Econometrics IV/PS/PS4/LaTeX/';
+    filename = strcat('tSummaryStatistics_',modelname,'.tex');
+    table2latex(T, strcat(path,filename));
+
 
